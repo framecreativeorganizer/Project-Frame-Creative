@@ -13,19 +13,11 @@ export async function POST(request: NextRequest) {
     const bytes = await file.arrayBuffer()
     const buffer = Buffer.from(bytes)
 
-    // Ensure public/uploads directory exists
-    const uploadsDir = path.join(process.cwd(), 'public', 'uploads')
-    await fs.mkdir(uploadsDir, { recursive: true })
+    // Convert file to Base64 string representation
+    const mimeType = file.type || 'image/png'
+    const base64Data = buffer.toString('base64')
+    const fileUrl = `data:${mimeType};base64,${base64Data}`
 
-    // Generate unique name or keep original name
-    const ext = path.extname(file.name)
-    const fileName = `qris_${Date.now()}${ext || '.png'}`
-    const filePath = path.join(uploadsDir, fileName)
-
-    await fs.writeFile(filePath, buffer)
-
-    // Return the public web path
-    const fileUrl = `/uploads/${fileName}`
     return NextResponse.json({ url: fileUrl })
   } catch (error) {
     console.error('Error during file upload:', error)
