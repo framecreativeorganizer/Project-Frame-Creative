@@ -1,0 +1,130 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  role      String   @default("CLIENT") // "CLIENT" | "ADMIN"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Booking {
+  id             String    @id @default(cuid())
+  clientName     String
+  clientWhatsapp String
+  clientEmail    String
+  eventName      String
+  eventLocation  String
+  eventDate      DateTime
+  eventTime      String
+  notes          String?
+  packageName    String
+  serviceName    String
+  status         String    @default("PENDING") // "PENDING" | "CONFIRMED" | "CANCELLED"
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  invoice        Invoice?
+
+  @@map("bookings")
+}
+
+model Invoice {
+  id            String    @id @default(cuid())
+  bookingId     String    @unique
+  booking       Booking   @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  invoiceNo     String    @unique
+  totalAmount   Float
+  depositAmount Float     // 50% DP
+  balanceAmount Float     // Remaining balance
+  status        String    @default("UNPAID") // "UNPAID" | "DP_PAID" | "PAID"
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  payments      Payment[]
+
+  @@map("invoices")
+}
+
+model Payment {
+  id              String   @id @default(cuid())
+  invoiceId       String
+  invoice         Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  method          String   // "QRIS" | "BANK_TRANSFER" | "GATEWAY"
+  amount          Float
+  status          String   @default("PENDING") // "PENDING" | "SUCCESS" | "FAILED"
+  referenceNumber String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("payments")
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String
+  benefits    String   // Comma separated values
+  imageUrl    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("services")
+}
+
+model Package {
+  id          String   @id @default(cuid())
+  serviceName String
+  name        String   // "Basic" | "Premium" | "Exclusive"
+  price       Float
+  duration    String
+  description String
+  features    String   // Comma-separated
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("packages")
+}
+
+model PortfolioItem {
+  id        String   @id @default(cuid())
+  category  String   // "Wedding" | "Corporate" | "Wisuda" | "Gathering" | "Seminar"
+  title     String
+  imageUrl  String
+  videoUrl  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("portfolio_items")
+}
+
+model Testimonial {
+  id         String   @id @default(cuid())
+  clientName String
+  eventType  String
+  rating     Int      @default(5)
+  comment    String
+  avatarUrl  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("testimonials")
+}
+
+model Setting {
+  key       String   @id
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("settings")
+}

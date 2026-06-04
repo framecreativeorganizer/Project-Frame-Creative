@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  --color-on-error-container: #93000a;
+  --color-surface-container-high: #dce9ff;
+  --color-on-primary: #ffffff;
+  --color-background: #f8f9ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-secondary-container: #47a1ff;
+  --color-inverse-primary: #b2c5ff;
+  --color-on-primary-fixed-variant: #284484;
+  --color-on-secondary-fixed: #001c38;
+  --color-surface-container: #e6eeff;
+  --color-tertiary: #191c1e;
+  --color-on-surface-variant: #444650;
+  --color-secondary-fixed: #d3e4ff;
+  --color-on-surface: #0d1c2e;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-fixed: #191c1e;
+  --color-on-tertiary-container: #96999b;
+  --color-surface-bright: #f8f9ff;
+  --color-outline: #747781;
+  --color-surface-tint: #415c9e;
+  --color-surface-variant: #d5e3fc;
+  --color-on-primary-container: #7d97dd;
+  --color-secondary: #0060a8;
+  --color-primary-fixed-dim: #b2c5ff;
+  --color-surface: #f8f9ff;
+  --color-inverse-surface: #233144;
+  --color-inverse-on-surface: #eaf1ff;
+  --color-on-background: #0d1c2e;
+  --color-on-secondary-fixed-variant: #004881;
+  --color-on-tertiary-fixed-variant: #444749;
+  --color-on-error: #ffffff;
+  --color-tertiary-fixed: #e0e3e5;
+  --color-tertiary-container: #2e3133;
+  --color-outline-variant: #c4c6d2;
+  --color-surface-container-highest: #d5e3fc;
+  --color-secondary-fixed-dim: #a2c9ff;
+  --color-tertiary-fixed-dim: #c4c7c9;
+  --color-primary: #001948;
+  --color-primary-fixed: #dae2ff;
+  --color-on-secondary: #ffffff;
+  --color-on-primary-fixed: #001847;
+  --color-on-secondary-container: #003663;
+  --color-primary-container: #0a2d6d;
+  --color-surface-container-low: #eff4ff;
+  --color-surface-dim: #ccdbf3;
+
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  --spacing-container-max: 1280px;
+  --spacing-margin-desktop: 64px;
+  --spacing-margin-mobile: 20px;
+  --spacing-section-gap: 120px;
+  --spacing-gutter: 24px;
+  --spacing-base: 8px;
+
+  --font-body-lg: var(--font-inter), sans-serif;
+  --font-caption: var(--font-inter), sans-serif;
+  --font-display-lg-mobile: var(--font-outfit), sans-serif;
+  --font-body-md: var(--font-inter), sans-serif;
+  --font-headline-lg: var(--font-outfit), sans-serif;
+  --font-display-lg: var(--font-outfit), sans-serif;
+  --font-headline-md: var(--font-outfit), sans-serif;
+  --font-label-md: var(--font-inter), sans-serif;
+}
+
+@utility text-body-lg {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+@utility text-caption {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+@utility text-display-lg-mobile {
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+@utility text-body-md {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+@utility text-headline-lg {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+}
+@utility text-display-lg {
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+@utility text-headline-md {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+@utility text-label-md {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  font-weight: 600;
+}
+
+@utility text-gradient {
+  background: linear-gradient(to right, #0A2D6D, #1E88E5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@utility bg-gradient-btn {
+  background: linear-gradient(135deg, #0A2D6D, #1E88E5);
+}
+@utility soft-shadow {
+  box-shadow: 0 4px 20px rgba(10, 45, 109, 0.08);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@utility animate-fade-in {
+  animation: fadeIn 0.18s ease-out both;
+}
+@utility animate-slide-up {
+  animation: slideUp 0.22s ease-out both;
+}
+@utility animate-slide-down {
+  animation: slideDown 0.2s ease-out both;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    @apply font-body-md;
+  }
+}

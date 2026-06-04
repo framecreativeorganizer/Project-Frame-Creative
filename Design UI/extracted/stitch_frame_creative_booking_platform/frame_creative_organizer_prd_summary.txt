@@ -1,0 +1,31 @@
+PRODUCT REQUIREMENTS DOCUMENT (PRD)
+Frame Creative Organizer - Photobooth & Event Booking Platform
+Version: V1.0 (MVP)
+
+Objective: 
+Membangun website marketing dan booking online untuk meningkatkan lead, mempercepat proses pemesanan, serta meningkatkan kredibilitas Frame Creative Organizer sebagai penyedia jasa Photobooth, Wedding Entertainment, dan Event Production.
+
+1. BUSINESS GOALS:
+- Mendapatkan lebih banyak inquiry dan booking.
+- Memudahkan calon client melihat paket dan harga.
+- Menampilkan portofolio dan testimoni.
+
+2. TARGET USER:
+- Calon pengantin, Wedding Organizer, Event Organizer, Kampus, Perusahaan.
+
+3. WEBSITE STRUCTURE:
+- Homepage: Hero, Value Prop, Paket Unggulan, Portfolio, Testimoni, FAQ, CTA.
+- Services Page: Photobooth, Streaming, Event Documentation.
+- Portfolio Page: Filtered gallery (Wedding, Corporate, Campus, etc.).
+- Pricing Page: Basic, Premium, Exclusive packages.
+- Booking System: Form-based flow leading to WhatsApp Admin.
+
+4. DESIGN DIRECTION:
+- Style: Modern, Elegant, Premium, Professional.
+- Colors: #0A2D6D (Primary), #1E88E5 (Secondary), #FFFFFF (Accent).
+- Typography: Poppins, Inter.
+- Visual: Full width gallery, Clean layout, Blue premium theme.
+
+5. TECHNICAL:
+- Next.js, TailwindCSS, Supabase integration mentioned (for reference).
+- WhatsApp Integration is key.
